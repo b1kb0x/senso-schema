@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Senso\Schema\Core;
 
-use Senso\Schema\Core\Registry;
 
 if (!defined('ABSPATH')) {
     exit;
