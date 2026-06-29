@@ -34,6 +34,7 @@ final class ProductBuilder
             gtin: $this->resolveGtin($product),
 
             rating: null,
+
             reviewCount: 0,
 
             price: (string) $product->get_price(),
@@ -69,6 +70,24 @@ final class ProductBuilder
 
         foreach ($fields as $field) {
 
+            $value = trim((string) $product->get_meta($field));
+
+            if ($value !== '') {
+                return $value;
+            }
+        }
+
+        return null;
+    }
+
+    private function resolveMpn(\WC_Product $product): ?string
+    {
+        $fields = [
+            '_mpn',
+            'mpn',
+        ];
+
+        foreach ($fields as $field) {
             $value = trim((string) $product->get_meta($field));
 
             if ($value !== '') {

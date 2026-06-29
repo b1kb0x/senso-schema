@@ -27,6 +27,8 @@ final readonly class ProductData
 
         public ?string $gtin,
 
+        public ?string $mpn,
+
         public ?float $rating,
 
         public int $reviewCount,
