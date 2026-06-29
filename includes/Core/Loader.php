@@ -1,0 +1,33 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Senso\Schema\Core;
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+/**
+ * Simple PSR-4 autoloader.
+ */
+spl_autoload_register(function (string $class): void {
+
+    $prefix = 'Senso\\Schema\\';
+
+    if (strpos($class, $prefix) !== 0) {
+        return;
+    }
+
+    $relative = substr($class, strlen($prefix));
+
+    $file = SENSO_SCHEMA_PATH .
+        'includes/' .
+        str_replace('\\', DIRECTORY_SEPARATOR, $relative) .
+        '.php';
+
+    if (file_exists($file)) {
+        require_once $file;
+    }
+
+});
