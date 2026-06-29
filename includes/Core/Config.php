@@ -58,4 +58,27 @@ final class Config
     {
         return trailingslashit(home_url()) . '#' . $suffix;
     }
+
+    /**
+     * WooCommerce attributes exported as additionalProperty.
+     */
+    public const PRODUCT_PROPERTIES = [
+
+        'pa_altitude' => 'Altitude',
+
+        'pa_q-score'  => 'Q-Score',
+
+        'pa_region'   => 'Region',
+
+        'pa_roast'    => 'Roast',
+
+        'pa_variety'  => 'Variety',
+
+        'pa_process'  => 'Process',
+
+        'pa_weight'   => 'Weight',
+
+        'pa_ground'   => 'Ground',
+
+    ];
 }
