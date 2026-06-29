@@ -18,6 +18,14 @@ final class ProductBuilder
 {
     public function build(WC_Product $product): ProductData
     {
+
+        $image = wp_get_attachment_image_url(
+            $product->get_image_id(),
+            'full'
+        );
+
+        $image = is_string($image) ? $image : null;
+
         return new ProductData(
 
             id: $product->get_id(),
@@ -48,10 +56,7 @@ final class ProductBuilder
                 ? 'https://schema.org/InStock'
                 : 'https://schema.org/OutOfStock',
 
-            image: wp_get_attachment_image_url(
-                $product->get_image_id(),
-                'full'
-            ),
+            image: $image,
 
             specialty: [],
 
