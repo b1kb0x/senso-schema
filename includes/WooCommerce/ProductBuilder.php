@@ -126,7 +126,9 @@ final class ProductBuilder
                 continue;
             }
 
-            if (!isset(Config::PRODUCT_PROPERTIES[$attribute->get_name()])) {
+            $config = Config::PRODUCT_PROPERTIES[$attribute->get_name()] ?? null;
+
+            if (!$config || empty($config['export'])) {
                 continue;
             }
 
@@ -141,10 +143,6 @@ final class ProductBuilder
             if (empty($terms)) {
                 continue;
             }
-
-            $taxonomy = get_taxonomy($attribute->get_name());
-
-            $config = Config::PRODUCT_PROPERTIES[$attribute->get_name()];
 
             $value = implode(', ', $terms);
 

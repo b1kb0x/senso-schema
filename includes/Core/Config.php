@@ -65,44 +65,51 @@ final class Config
     public const PRODUCT_PROPERTIES = [
 
         'pa_altitude' => [
-            'name' => 'Altitude',
+            'name'   => 'Altitude',
             'suffix' => ' MASL',
+            'export' => true,
         ],
 
         'pa_q-score' => [
-            'name' => 'Q-Score',
+            'name'   => 'Q-Score',
             'suffix' => '',
+            'export' => true,
         ],
 
         'pa_region' => [
-            'name' => 'Region',
+            'name'   => 'Region',
             'suffix' => '',
+            'export' => true,
         ],
 
         'pa_roast' => [
-            'name' => 'Roast',
+            'name'   => 'Roast',
             'suffix' => '',
+            'export' => true,
         ],
 
         'pa_variety' => [
-            'name' => 'Variety',
+            'name'   => 'Variety',
             'suffix' => '',
+            'export' => true,
         ],
 
         'pa_process' => [
-            'name' => 'Process',
+            'name'   => 'Process',
             'suffix' => '',
+            'export' => true,
         ],
 
         'pa_weight' => [
-            'name' => 'Weight',
+            'name'   => 'Weight',
             'suffix' => ' g',
+            'export' => true,
         ],
 
         'pa_ground' => [
-            'name' => 'Ground',
+            'name'   => 'Ground',
             'suffix' => '',
+            'export' => false,
         ],
-
     ];
 }
