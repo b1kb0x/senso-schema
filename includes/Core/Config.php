@@ -112,4 +112,14 @@ final class Config
             'export' => false,
         ],
     ];
+
+    public const MERCHANT_RETURN_POLICY = [
+
+        'country' => 'UA',
+
+        'days' => 14,
+
+        'category' => 'https://schema.org/MerchantReturnFiniteReturnWindow',
+
+    ];
 }

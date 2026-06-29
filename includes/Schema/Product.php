@@ -93,6 +93,13 @@ final class Product extends Node
                 ],
 
                 'itemCondition' => 'https://schema.org/NewCondition',
+
+                'hasMerchantReturnPolicy' => [
+                    '@type' => 'MerchantReturnPolicy',
+                    'applicableCountry' => Config::MERCHANT_RETURN_POLICY['country'],
+                    'returnPolicyCategory' => Config::MERCHANT_RETURN_POLICY['category'],
+                    'merchantReturnDays' => Config::MERCHANT_RETURN_POLICY['days'],
+                ],
             ],
 
         ]);
