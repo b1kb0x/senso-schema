@@ -58,6 +58,14 @@ final class Product extends Node
                 '@id' => Config::id('brand'),
             ],
 
+            'aggregateRating' => $product->rating !== null
+                ? [
+                    '@type' => 'AggregateRating',
+                    'ratingValue' => $product->rating,
+                    'reviewCount' => $product->reviewCount,
+                ]
+                : null,
+
             'offers' => [
                 '@type' => 'Offer',
 

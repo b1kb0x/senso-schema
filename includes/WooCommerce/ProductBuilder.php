@@ -35,9 +35,9 @@ final class ProductBuilder
 
             mpn: $this->resolveMpn($product),
 
-            rating: null,
+            rating: $this->resolveRating($product),
 
-            reviewCount: 0,
+            reviewCount: $this->resolveReviewCount($product),
 
             price: (string) $product->get_price(),
 
@@ -100,5 +100,17 @@ final class ProductBuilder
         }
 
         return null;
+    }
+
+    private function resolveRating(\WC_Product $product): ?float
+    {
+        $rating = (float) $product->get_average_rating();
+
+        return $rating > 0 ? $rating : null;
+    }
+
+    private function resolveReviewCount(\WC_Product $product): int
+    {
+        return (int) $product->get_review_count();
     }
 }
