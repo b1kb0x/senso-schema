@@ -34,6 +34,14 @@ final class Product extends Node
 
         $context = new Context();
 
+        $category = null;
+
+        $terms = get_the_terms($product->id, 'product_cat');
+
+        if (!is_wp_error($terms) && !empty($terms)) {
+            $category = reset($terms)->name;
+        }
+
         return $this->clean([
 
             '@type' => 'Product',
@@ -51,6 +59,8 @@ final class Product extends Node
             'image' => $product->image,
 
             'description' => $product->description,
+
+            'category' => $category,
 
             'sku' => $product->sku,
 
