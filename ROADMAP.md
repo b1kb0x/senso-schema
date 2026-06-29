@@ -1,87 +1,122 @@
 # Senso Schema Roadmap
 
-## Philosophy
+## Vision
 
-Senso Schema focuses on generating truthful, standards-compliant Schema.org markup for WordPress and WooCommerce.
+Senso Schema is a lightweight, developer-friendly WordPress plugin that automatically generates truthful, standards-compliant Schema.org markup for WooCommerce.
 
-The plugin does not generate fabricated data and does not require unnecessary configuration.
-
----
-
-# v0.3.2 — Stabilization
-
-### Core
-
-* [ ] JSON-LD output hardening (`JSON_HEX_*`)
-* [ ] Improve WooCommerce BreadcrumbList
-* [ ] Review `ProductData::$specialty`
-* [ ] Final cleanup after code audit
-
----
-
-# v0.4 — Better WooCommerce Schema
-
-### Pages
-
-* [ ] CollectionPage for WooCommerce categories
-* [ ] Improved WebPage schema
-* [ ] Better Product category support
-
-### Product
-
-* [ ] Product ImageObject
-* [ ] Better category detection
-* [ ] Better additionalProperty mapping
-
----
-
-# v0.5 — Rich Product Data
-
-### Product
-
-* [ ] AggregateRating
-* [ ] Review
-* [ ] GTIN / GTIN8 / GTIN13 / GTIN14 support
-* [ ] MPN support
-* [ ] Brand improvements
-
----
-
-# v0.6 — Organization
-
-* [ ] sameAs support
-* [ ] Social profiles
-* [ ] ContactPoint
-* [ ] Merchant improvements
-
----
-
-# v0.7 — Validation
-
-* [ ] Google Rich Results optimization
-* [ ] Schema.org validation
-* [ ] Performance optimization
-* [ ] Final architecture review
-
----
-
-# v1.0 — Production Release
-
-* [ ] Complete Schema coverage
-* [ ] Google Rich Results validation
-* [ ] Schema.org validation
-* [ ] Stable public release
+The project prioritizes correctness, maintainability and automation over configuration.
 
 ---
 
 ## Project Principles
 
 * Truthful structured data only
-* No fake reviews
-* No fake ratings
-* No fake GTIN
+* No fake reviews or ratings
+* No fake GTIN or product identifiers
 * WordPress native
 * WooCommerce native
 * Zero external dependencies
-* Small focused classes
+* Clean architecture
 * One logical change per commit
+* Performance first
+* Google Rich Results compatibility
+
+---
+
+# v0.3.2 — Stabilization
+
+Focus: improve the existing implementation without adding major features.
+
+### Core
+
+* [ ] Harden JSON-LD output (`JSON_HEX_*`)
+* [ ] Improve WooCommerce BreadcrumbList
+* [ ] Decide the future of `ProductData::$specialty`
+
+### Quality
+
+* [ ] Final review after cleanup
+* [ ] Improve internal documentation
+
+---
+
+# v0.4 — WooCommerce Schema
+
+Focus: improve store and category markup.
+
+### Collection Pages
+
+* [ ] CollectionPage schema
+* [ ] Product category schema
+* [ ] Better category detection
+
+### Product
+
+* [ ] Product ImageObject
+* [ ] Better additionalProperty mapping
+
+### WebPage
+
+* [ ] Improve WebPage relationships
+
+---
+
+# v0.5 — Rich Product Schema
+
+Focus: richer product information.
+
+### Product
+
+* [ ] AggregateRating
+* [ ] Review
+* [ ] Product identifiers (GTIN)
+* [ ] MPN support
+* [ ] Brand improvements
+
+---
+
+# v0.6 — Organization & Merchant
+
+Focus: better organization identity.
+
+* [ ] sameAs
+* [ ] ContactPoint
+* [ ] Merchant improvements
+* [ ] Organization enhancements
+
+---
+
+# v0.7 — Production Readiness
+
+Focus: release preparation.
+
+* [ ] Google Rich Results optimization
+* [ ] Schema.org validation
+* [ ] Performance review
+* [ ] Architecture review
+* [ ] Documentation review
+
+---
+
+# v1.0 — Stable Release
+
+Focus: first production release.
+
+* [ ] Complete Schema coverage
+* [ ] Google Rich Results validation
+* [ ] Schema.org validation
+* [ ] Stable public release
+* [ ] Long-term backward compatibility
+
+---
+
+## Future Ideas
+
+These ideas are intentionally outside the current roadmap.
+
+* Multi-brand support
+* LocalBusiness support
+* FAQPage where appropriate
+* HowTo where appropriate
+* Additional Schema types
+* Optional integrations with other plugins
