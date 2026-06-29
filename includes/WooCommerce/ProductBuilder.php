@@ -33,6 +33,9 @@ final class ProductBuilder
 
             gtin: $this->resolveGtin($product),
 
+            rating: null,
+            reviewCount: 0,
+
             price: (string) $product->get_price(),
 
             currency: get_woocommerce_currency(),
