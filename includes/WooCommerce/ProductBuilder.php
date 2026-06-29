@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Senso\Schema\WooCommerce;
 
+use Senso\Schema\Core\Config;
 use WC_Product;
 
 if (!defined('ABSPATH')) {
@@ -125,6 +126,10 @@ final class ProductBuilder
                 continue;
             }
 
+            if (!isset(Config::PRODUCT_PROPERTIES[$attribute->get_name()])) {
+                continue;
+            }
+
             $terms = wc_get_product_terms(
                 $product->get_id(),
                 $attribute->get_name(),
@@ -140,9 +145,7 @@ final class ProductBuilder
             $taxonomy = get_taxonomy($attribute->get_name());
 
             $properties[] = [
-                'name'  => $taxonomy
-                    ? $taxonomy->labels->singular_name
-                    : $attribute->get_name(),
+                'name'  => Config::PRODUCT_PROPERTIES[$attribute->get_name()],
                 'value' => implode(', ', $terms),
             ];
         }
