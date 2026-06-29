@@ -54,7 +54,7 @@ final class ProductBuilder
 
             specialty: [],
 
-            additionalProperties: [],
+            additionalProperties: $this->resolveAdditionalProperties($product),
         );
     }
 
@@ -62,14 +62,15 @@ final class ProductBuilder
     {
         $fields = [
             '_gtin',
-            '_gtin8',
-            '_gtin12',
-            '_gtin13',
-            '_gtin14',
-            '_ean',
-            'ean',
-            '_barcode',
-            'barcode',
+            'gtin',
+
+            '_alg_ean',
+            '_alg_gtin',
+
+            '_wpm_gtin_code',
+            '_wpm_gtin',
+
+            '_rank_math_gtin',
         ];
 
         foreach ($fields as $field) {
@@ -112,5 +113,40 @@ final class ProductBuilder
     private function resolveReviewCount(\WC_Product $product): int
     {
         return (int) $product->get_review_count();
+    }
+
+    private function resolveAdditionalProperties(WC_Product $product): array
+    {
+        $properties = [];
+
+        foreach ($product->get_attributes() as $attribute) {
+
+            if (!$attribute->is_taxonomy()) {
+                continue;
+            }
+
+            $terms = wc_get_product_terms(
+                $product->get_id(),
+                $attribute->get_name(),
+                [
+                    'fields' => 'names',
+                ]
+            );
+
+            if (empty($terms)) {
+                continue;
+            }
+
+            $taxonomy = get_taxonomy($attribute->get_name());
+
+            $properties[] = [
+                'name'  => $taxonomy
+                    ? $taxonomy->labels->singular_name
+                    : $attribute->get_name(),
+                'value' => implode(', ', $terms),
+            ];
+        }
+
+        return $properties;
     }
 }

@@ -58,6 +58,17 @@ final class Product extends Node
                 '@id' => Config::id('brand'),
             ],
 
+            'additionalProperty' => !empty($product->additionalProperties)
+                ? array_map(
+                    static fn(array $property) => [
+                        '@type' => 'PropertyValue',
+                        'name'  => $property['name'],
+                        'value' => $property['value'],
+                    ],
+                    $product->additionalProperties
+                )
+                : null,
+
             'aggregateRating' => $product->rating !== null
                 ? [
                     '@type' => 'AggregateRating',
