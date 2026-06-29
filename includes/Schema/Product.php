@@ -44,6 +44,10 @@ final class Product extends Node
 
             'url' => $product->url,
 
+            'mainEntityOfPage' => [
+                '@id' => $context->id('webpage'),
+            ],
+
             'image' => $product->image,
 
             'description' => $product->description,
