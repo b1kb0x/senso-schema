@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Senso\Schema\Core;
 
-use Senso\Schema\Schema\Organization;
-use Senso\Schema\Schema\ImageObject;
-use Senso\Schema\Schema\WebSite;
 use Senso\Schema\Core\Registry;
 
 if (!defined('ABSPATH')) {
