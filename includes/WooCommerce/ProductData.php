@@ -52,6 +52,8 @@ final readonly class ProductData
          */
         public array $specialty = [],
 
+        public array $additionalProperties = [],
+
     ) {
     }
 }

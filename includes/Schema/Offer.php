@@ -1,14 +1,14 @@
 <?php
 
-namespace SensoSchema\Schema;
+namespace Senso\Schema\Schema;
 
-use SensoSchema\Core\Node;
-use SensoSchema\WooCommerce\ProductData;
-use SensoSchema\Core\Config;
+use Senso\Schema\Core\Config;
+use Senso\Schema\Core\Node;
+use Senso\Schema\WooCommerce\ProductData;
 
 class Offer
 {
-    public static function build(ProductData $product): array
+    public static function toArray(ProductData $product): array
     {
         return Node::clean([
             '@type' => 'Offer',
@@ -18,8 +18,6 @@ class Offer
             'priceCurrency' => $product->currency,
 
             'availability' => $product->availability,
-
-            'url' => $product->url,
 
             'seller' => [
                 '@id' => Config::id('organization'),

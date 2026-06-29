@@ -33,6 +33,8 @@ final class ProductBuilder
 
             gtin: $this->resolveGtin($product),
 
+            mpn: $this->resolveMpn($product),
+
             rating: null,
 
             reviewCount: 0,
@@ -51,6 +53,8 @@ final class ProductBuilder
             ),
 
             specialty: [],
+
+            additionalProperties: [],
         );
     }
 

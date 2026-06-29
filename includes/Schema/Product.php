@@ -51,6 +51,8 @@ final class Product extends Node
 
             'sku' => $product->sku,
 
+            'mpn' => $product->mpn,
+
             ...self::gtinProperty($product->gtin),
 
             'brand' => [
