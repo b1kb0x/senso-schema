@@ -38,6 +38,11 @@ final class Plugin
 
     public function renderSchema(): void
     {
+        error_log(print_r(
+            \Senso\Schema\Diagnostics\WooCommerceInspector::inspect(),
+            true
+        ));
+
         (new SchemaManager())->output();
     }
 }

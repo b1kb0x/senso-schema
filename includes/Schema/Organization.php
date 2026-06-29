@@ -40,6 +40,18 @@ final class Organization extends Node
 
             ],
 
+            'hasMerchantReturnPolicy' => [
+
+                '@type' => 'MerchantReturnPolicy',
+
+                'applicableCountry' => Config::MERCHANT_RETURN_POLICY['country'],
+
+                'returnPolicyCategory' => Config::MERCHANT_RETURN_POLICY['category'],
+
+                'merchantReturnDays' => Config::MERCHANT_RETURN_POLICY['days'],
+
+            ],
+
             'sameAs' => Config::get('organization.sameAs'),
 
             'telephone' => Config::get('organization.telephone'),

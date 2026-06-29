@@ -86,8 +86,6 @@ final class Product extends Node
 
                 'availability' => $product->availability,
 
-
-
                 'seller' => [
                     '@id' => Config::id('organization'),
                 ],
@@ -99,6 +97,37 @@ final class Product extends Node
                     'applicableCountry' => Config::MERCHANT_RETURN_POLICY['country'],
                     'returnPolicyCategory' => Config::MERCHANT_RETURN_POLICY['category'],
                     'merchantReturnDays' => Config::MERCHANT_RETURN_POLICY['days'],
+                ],
+
+                'shippingDetails' => [
+
+                    '@type' => 'OfferShippingDetails',
+
+                    'shippingDestination' => [
+                        '@type' => 'DefinedRegion',
+                        'addressCountry' => Config::SHIPPING['country'],
+                    ],
+
+                    'deliveryTime' => [
+
+                        '@type' => 'ShippingDeliveryTime',
+
+                        'handlingTime' => [
+                            '@type' => 'QuantitativeValue',
+                            'minValue' => Config::SHIPPING['handling_time']['min'],
+                            'maxValue' => Config::SHIPPING['handling_time']['max'],
+                            'unitCode' => 'DAY',
+                        ],
+
+                        'transitTime' => [
+                            '@type' => 'QuantitativeValue',
+                            'minValue' => Config::SHIPPING['transit_time']['min'],
+                            'maxValue' => Config::SHIPPING['transit_time']['max'],
+                            'unitCode' => 'DAY',
+                        ],
+
+                    ],
+
                 ],
             ],
 

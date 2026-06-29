@@ -122,4 +122,20 @@ final class Config
         'category' => 'https://schema.org/MerchantReturnFiniteReturnWindow',
 
     ];
+
+    public const SHIPPING = [
+
+        'country' => 'UA',
+
+        'handling_time' => [
+            'min' => 0,
+            'max' => 1,
+        ],
+
+        'transit_time' => [
+            'min' => 1,
+            'max' => 3,
+        ],
+
+    ];
 }
