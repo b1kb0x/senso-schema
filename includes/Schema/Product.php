@@ -8,7 +8,6 @@ use Senso\Schema\Core\Config;
 use Senso\Schema\Core\Context;
 use Senso\Schema\Core\Node;
 use Senso\Schema\WooCommerce\ProductBuilder;
-use SensoSchema\Schema\Offer;
 
 if (!defined('ABSPATH')) {
     exit;
