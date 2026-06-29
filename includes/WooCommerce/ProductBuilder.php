@@ -144,9 +144,17 @@ final class ProductBuilder
 
             $taxonomy = get_taxonomy($attribute->get_name());
 
+            $config = Config::PRODUCT_PROPERTIES[$attribute->get_name()];
+
+            $value = implode(', ', $terms);
+
+            if (!empty($config['suffix'])) {
+                $value .= $config['suffix'];
+            }
+
             $properties[] = [
-                'name'  => Config::PRODUCT_PROPERTIES[$attribute->get_name()],
-                'value' => implode(', ', $terms),
+                'name'  => $config['name'],
+                'value' => $value,
             ];
         }
 
