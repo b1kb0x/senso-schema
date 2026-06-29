@@ -1,21 +1,20 @@
 # Senso Schema Roadmap
 
-## v1.0
+## v0.4
 
-- MerchantReturnPolicy
-- ShippingDetails
+- CollectionPage for WooCommerce categories
+- WebPage improvements (if required)
+- Product category schema refinements
+
+## v0.5
+
 - Review
 - AggregateRating
-- Validation
+- Automatic GTIN support improvements
 
-## v1.1
+## v1.0
 
-- Filters
-- Hooks
-- API
-
-## v2.0
-
-- Refactoring
-- Performance
-- Extensibility
+- Complete Schema coverage for SENSO COFFEE
+- Google Rich Results validation
+- Schema.org validation
+- Stable public release
