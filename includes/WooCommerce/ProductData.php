@@ -39,7 +39,7 @@ final readonly class ProductData
 
         public string $availability,
 
-        public ?string $image,
+        public readonly ?string $image,
 
         /**
          * Specialty coffee properties.

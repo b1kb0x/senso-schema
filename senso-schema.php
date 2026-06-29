@@ -4,6 +4,7 @@
  * Plugin URI: https://senso.coffee
  * Description: Lightweight Schema.org generator for Senso Coffee.
  * Version: 1.0.0
+ * Requires PHP: 8.3
  * Author: Senso Coffee
  * Author URI: https://senso.coffee
  * License: GPL2+

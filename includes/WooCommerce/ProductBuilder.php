@@ -18,14 +18,6 @@ final class ProductBuilder
 {
     public function build(WC_Product $product): ProductData
     {
-        error_log(
-            'Schema image: ' .
-            wp_get_attachment_image_url(
-                $product->get_image_id(),
-                'full'
-            )
-        );
-
         return new ProductData(
 
             id: $product->get_id(),
