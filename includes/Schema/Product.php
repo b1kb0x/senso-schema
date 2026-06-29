@@ -8,6 +8,7 @@ use Senso\Schema\Core\Config;
 use Senso\Schema\Core\Context;
 use Senso\Schema\Core\Node;
 use Senso\Schema\WooCommerce\ProductBuilder;
+use SensoSchema\Schema\Offer;
 
 if (!defined('ABSPATH')) {
     exit;
@@ -50,6 +51,8 @@ final class Product extends Node
 
             'sku' => $product->sku,
 
+            ...self::gtinProperty($product->gtin),
+
             'brand' => [
                 '@id' => Config::id('brand'),
             ],
@@ -73,5 +76,22 @@ final class Product extends Node
             ],
 
         ]);
+    }
+
+    private static function gtinProperty(?string $gtin): array
+    {
+        if (!$gtin) {
+            return [];
+        }
+
+        $digits = preg_replace('/\D/', '', $gtin);
+
+        return match (strlen($digits)) {
+            8  => ['gtin8'  => $digits],
+            12 => ['gtin12' => $digits],
+            13 => ['gtin13' => $digits],
+            14 => ['gtin14' => $digits],
+            default => [],
+        };
     }
 }

@@ -25,6 +25,8 @@ final readonly class ProductData
 
         public string $sku,
 
+        public ?string $gtin,
+
         public string $price,
 
         public string $currency,

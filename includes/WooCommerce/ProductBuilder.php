@@ -31,6 +31,8 @@ final class ProductBuilder
 
             sku: (string) $product->get_sku(),
 
+            gtin: $this->resolveGtin($product),
+
             price: (string) $product->get_price(),
 
             currency: get_woocommerce_currency(),
@@ -46,5 +48,31 @@ final class ProductBuilder
 
             specialty: [],
         );
+    }
+
+    private function resolveGtin(\WC_Product $product): ?string
+    {
+        $fields = [
+            '_gtin',
+            '_gtin8',
+            '_gtin12',
+            '_gtin13',
+            '_gtin14',
+            '_ean',
+            'ean',
+            '_barcode',
+            'barcode',
+        ];
+
+        foreach ($fields as $field) {
+
+            $value = trim((string) $product->get_meta($field));
+
+            if ($value !== '') {
+                return $value;
+            }
+        }
+
+        return null;
     }
 }
