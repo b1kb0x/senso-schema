@@ -4,6 +4,29 @@ Custom Schema.org generator for the SENSO COFFEE WooCommerce website.
 
 The plugin generates clean JSON-LD without relying on third-party SEO plugins.
 
+v1.0.0
+
+Initial production release.
+
+Implemented:
+
+- Organization
+- WebSite
+- WebPage
+- Product
+- Offer
+- Brand
+- BreadcrumbList
+- MerchantReturnPolicy
+- Product gallery images
+- Product URL in Offer
+- Organization contact information
+- Secure JSON-LD output
+- PHP 8.3 compatibility
+- WooCommerce 10 compatibility
+
+Production-ready for SENSO COFFEE.
+
 ## v0.2.6
 
 ### Added
