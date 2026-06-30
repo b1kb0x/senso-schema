@@ -22,9 +22,9 @@ final class Config
 
                 'sameAs' => [],
 
-                'telephone' => '',
+                'telephone' => '+380981077107',
 
-                'email' => '',
+                'email' => 'shop@senso.coffee',
 
             ],
 
