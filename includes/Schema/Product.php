@@ -94,6 +94,8 @@ final class Product extends Node
             'offers' => [
                 '@type' => 'Offer',
 
+                'url' => $product->url,
+
                 'price' => $product->price,
 
                 'priceCurrency' => $product->currency,
