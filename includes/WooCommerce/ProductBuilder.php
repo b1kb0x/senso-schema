@@ -19,12 +19,32 @@ final class ProductBuilder
     public function build(WC_Product $product): ProductData
     {
 
+        $images = [];
+
         $image = wp_get_attachment_image_url(
             $product->get_image_id(),
             'full'
         );
 
-        $image = is_string($image) ? $image : null;
+        if (is_string($image)) {
+            $images[] = $image;
+        }
+
+        foreach ($product->get_gallery_image_ids() as $image_id) {
+            $gallery_image = wp_get_attachment_image_url($image_id, 'full');
+
+            if (is_string($gallery_image)) {
+                $images[] = $gallery_image;
+            }
+        }
+
+        $images = array_values(array_unique($images));
+
+        $image = match (count($images)) {
+            0 => null,
+            1 => $images[0],
+            default => $images,
+        };
 
         return new ProductData(
 
