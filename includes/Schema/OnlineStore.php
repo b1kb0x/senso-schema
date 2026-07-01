@@ -45,8 +45,6 @@ final class OnlineStore extends Node
 
             'areaServed' => Config::get('store.areaServed', 'UA'),
 
-            'currenciesAccepted' => Config::get('store.currenciesAccepted', 'UAH'),
-
             'hasMerchantReturnPolicy' => [
 
                 '@type' => 'MerchantReturnPolicy',
