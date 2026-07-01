@@ -11,36 +11,41 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-/**
- * Organization node.
- */
-final class Organization extends Node
+final class OnlineStore extends Node
 {
     public function toArray(): array
     {
         return $this->clean([
 
-            '@type' => 'Organization',
+            '@type' => 'OnlineStore',
 
-            '@id' => Config::id('organization'),
+            '@id' => Config::id('store'),
 
             'name' => Config::get('organization.name'),
 
-            'description' => Config::get('organization.description'),
+            'description' => Config::get('store.description'),
 
             'url' => Config::get('website.url'),
 
             'logo' => [
-
                 '@id' => Config::id('logo'),
-
             ],
 
             'image' => [
-
                 '@id' => Config::id('logo'),
-
             ],
+
+            'parentOrganization' => [
+                '@id' => Config::id('organization'),
+            ],
+
+            'telephone' => Config::get('organization.telephone'),
+
+            'email' => Config::get('organization.email'),
+
+            'areaServed' => Config::get('store.areaServed', 'UA'),
+
+            'currenciesAccepted' => Config::get('store.currenciesAccepted', 'UAH'),
 
             'hasMerchantReturnPolicy' => [
 
@@ -53,12 +58,6 @@ final class Organization extends Node
                 'merchantReturnDays' => Config::MERCHANT_RETURN_POLICY['days'],
 
             ],
-
-            'sameAs' => Config::get('organization.sameAs'),
-
-            'telephone' => Config::get('organization.telephone'),
-
-            'email' => Config::get('organization.email'),
 
         ]);
     }

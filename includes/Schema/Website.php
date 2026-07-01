@@ -28,7 +28,7 @@ final class WebSite extends Node
             'name' => Config::get('website.name'),
 
             'publisher' => [
-                '@id' => Config::id('organization'),
+                '@id' => Config::id('store'),
             ],
 
             'inLanguage' => get_bloginfo('language'),

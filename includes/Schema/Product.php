@@ -32,6 +32,10 @@ final class Product extends Node
 
         $product = (new ProductBuilder())->build($wcProduct);
 
+        if ($product->image === null) {
+            return [];
+        }
+
         $context = new Context();
 
         $category = null;
@@ -72,6 +76,10 @@ final class Product extends Node
                 '@id' => Config::id('brand'),
             ],
 
+            'manufacturer' => [
+                '@id' => Config::id('organization'),
+            ],
+
             'additionalProperty' => !empty($product->additionalProperties)
                 ? array_map(
                     static fn(array $property) => [
@@ -103,7 +111,7 @@ final class Product extends Node
                 'availability' => $product->availability,
 
                 'seller' => [
-                    '@id' => Config::id('organization'),
+                    '@id' => Config::id('store'),
                 ],
 
                 'itemCondition' => 'https://schema.org/NewCondition',
@@ -130,15 +138,15 @@ final class Product extends Node
 
                         'handlingTime' => [
                             '@type' => 'QuantitativeValue',
-                            'minValue' => Config::SHIPPING['handling_time']['min'],
-                            'maxValue' => Config::SHIPPING['handling_time']['max'],
+                            'minValue' => Config::get('shipping.handling.min'),
+                            'maxValue' => Config::get('shipping.handling.max'),
                             'unitCode' => 'DAY',
                         ],
 
                         'transitTime' => [
                             '@type' => 'QuantitativeValue',
-                            'minValue' => Config::SHIPPING['transit_time']['min'],
-                            'maxValue' => Config::SHIPPING['transit_time']['max'],
+                            'minValue' => Config::get('shipping.transit.min'),
+                            'maxValue' => Config::get('shipping.transit.max'),
                             'unitCode' => 'DAY',
                         ],
 

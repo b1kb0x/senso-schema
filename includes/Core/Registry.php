@@ -11,6 +11,7 @@ use Senso\Schema\Schema\WebPage;
 use Senso\Schema\Schema\BreadcrumbList;
 use Senso\Schema\Schema\Brand;
 use Senso\Schema\Schema\Product;
+use Senso\Schema\Schema\OnlineStore;
 
 
 if (!defined('ABSPATH')) {
@@ -34,6 +35,8 @@ final class Registry
             ImageObject::class,
 
             Organization::class,
+
+            OnlineStore::class,
 
             WebSite::class,
 

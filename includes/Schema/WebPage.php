@@ -37,8 +37,12 @@ final class WebPage extends Node
                 '@id' => Config::id('website'),
             ],
 
-            'about' => [
-                '@id' => Config::id('organization'),
+            is_product()
+                ? 'mainEntity'
+                : 'about' => [
+                '@id' => is_product()
+                    ? $context->id('product')
+                    : Config::id('organization'),
             ],
 
             'breadcrumb' => [

@@ -165,7 +165,10 @@ final class ProductBuilder
                 ]
             );
 
-            if (empty($terms)) {
+            if (
+                empty($terms) ||
+                is_wp_error($terms)
+            ) {
                 continue;
             }
 

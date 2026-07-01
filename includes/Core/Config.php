@@ -18,6 +18,8 @@ final class Config
 
                 'name' => 'SENSO COFFEE',
 
+                'description' => 'Виробник свіжообсмаженої specialty кави. Обсмажуємо зелене зерно після отримання замовлення, фасуємо та відправляємо по Україні.',
+
                 'logo' => home_url('/wp-content/uploads/logo.png'),
 
                 'sameAs' => [],
@@ -33,6 +35,36 @@ final class Config
                 'url' => home_url('/'),
 
                 'name' => get_bloginfo('name'),
+
+            ],
+
+            'store' => [
+
+                'areaServed' => 'UA',
+
+                'currenciesAccepted' => 'UAH',
+
+                "description" => "Офіційний інтернет-магазин SENSO COFFEE. Приймаємо замовлення на свіжообсмажену specialty каву власного виробництва."
+
+            ],
+
+            'shipping' => [
+
+                'handling' => [
+
+                    'min' => 0,
+
+                    'max' => 1,
+
+                ],
+
+                'transit' => [
+
+                    'min' => 1,
+
+                    'max' => 3,
+
+                ],
 
             ],
 

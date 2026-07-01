@@ -23,19 +23,45 @@ final class Context
         }
 
         if (is_singular()) {
-            return get_permalink();
+
+            $url = get_permalink();
+
+            return is_string($url)
+                ? $url
+                : home_url('/');
         }
 
         if (is_home()) {
-            return get_permalink(get_option('page_for_posts'));
+
+            $url = get_permalink(
+                get_option('page_for_posts')
+            );
+
+            return is_string($url)
+                ? $url
+                : home_url('/');
         }
 
         if (is_category() || is_tag() || is_tax()) {
-            return get_term_link(get_queried_object());
+
+            $url = get_term_link(
+                get_queried_object()
+            );
+
+            return is_wp_error($url)
+                ? home_url('/')
+                : $url;
         }
 
         if (is_post_type_archive()) {
-            return get_post_type_archive_link(get_post_type());
+
+            $url = get_post_type_archive_link(
+                get_post_type()
+            );
+
+            return is_string($url)
+                ? $url
+                : home_url('/');
         }
 
         return home_url(add_query_arg([], $GLOBALS['wp']->request));
