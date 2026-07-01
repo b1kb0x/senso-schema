@@ -18,6 +18,8 @@ final class Plugin
      */
     public function run(): void
     {
+        Updater::init();
+        
         add_action(
             'init',
             [$this, 'init']
