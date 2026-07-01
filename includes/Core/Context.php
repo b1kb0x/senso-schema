@@ -88,6 +88,6 @@ final class Context
      */
     public function id(string $suffix): string
     {
-        return untrailingslashit($this->url()) . '#' . $suffix;
+        return trailingslashit($this->url()) . '#' . ltrim($suffix, '#');
     }
 }
