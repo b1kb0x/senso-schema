@@ -46,11 +46,15 @@ final class Organization extends Node
 
                 '@type' => 'MerchantReturnPolicy',
 
-                'applicableCountry' => Config::MERCHANT_RETURN_POLICY['country'],
+                'applicableCountry'    => Config::MERCHANT_RETURN_POLICY['country'],
 
                 'returnPolicyCategory' => Config::MERCHANT_RETURN_POLICY['category'],
 
-                'merchantReturnDays' => Config::MERCHANT_RETURN_POLICY['days'],
+                'merchantReturnDays'   => Config::MERCHANT_RETURN_POLICY['days'],
+
+                'returnMethod'         => Config::MERCHANT_RETURN_POLICY['method'],
+
+                'returnFees'           => Config::MERCHANT_RETURN_POLICY['fees'],
 
             ],
 
