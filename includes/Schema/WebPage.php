@@ -21,9 +21,19 @@ final class WebPage extends Node
     {
         $context = new Context();
 
+        $pageType = 'WebPage';
+
+        if (
+            is_shop() ||
+            is_product_category() ||
+            is_post_type_archive('product')
+        ) {
+            $pageType = 'CollectionPage';
+        }
+
         return $this->clean([
 
-            '@type' => 'WebPage',
+            '@type' => $pageType,
 
             '@id' => $context->id('webpage'),
 

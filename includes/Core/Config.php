@@ -149,9 +149,15 @@ final class Config
 
         'country' => 'UA',
 
+        'category' => 'https://schema.org/MerchantReturnFiniteReturnWindow',
+
         'days' => 14,
 
-        'category' => 'https://schema.org/MerchantReturnFiniteReturnWindow',
+        // Google Merchant recommended
+
+        'method' => 'https://schema.org/ReturnByMail',
+
+        'fees' => 'https://schema.org/ReturnFeesCustomerResponsibility',
 
     ];
 

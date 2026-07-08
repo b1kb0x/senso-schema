@@ -90,4 +90,19 @@ final class Context
     {
         return trailingslashit($this->url()) . '#' . ltrim($suffix, '#');
     }
+
+    public function hasProductSchema(): bool
+    {
+        if (!function_exists('is_product') || !is_product()) {
+            return false;
+        }
+
+        $product = wc_get_product(get_the_ID());
+
+        if (!$product) {
+            return false;
+        }
+
+        return true;
+    }
 }
