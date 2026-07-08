@@ -21,6 +21,8 @@ final class WebPage extends Node
     {
         $context = new Context();
 
+        $hasProduct = $context->hasProductSchema();
+
         $pageType = 'WebPage';
 
         if (
@@ -47,10 +49,10 @@ final class WebPage extends Node
                 '@id' => Config::id('website'),
             ],
 
-            is_product()
+            $hasProduct
                 ? 'mainEntity'
                 : 'about' => [
-                '@id' => is_product()
+                '@id' => $hasProduct
                     ? $context->id('product')
                     : Config::id('organization'),
             ],
