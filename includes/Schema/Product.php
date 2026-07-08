@@ -46,6 +46,71 @@ final class Product extends Node
             $category = reset($terms)->name;
         }
 
+        $offer = null;
+
+        if ($product->price !== '') {
+
+            $offer = [
+
+                '@type' => 'Offer',
+
+                'url' => $product->url,
+
+                'price' => $product->price,
+
+                'priceCurrency' => $product->currency,
+
+                'availability' => $product->availability,
+
+                'seller' => [
+                    '@id' => Config::id('store'),
+                ],
+
+                'itemCondition' => 'https://schema.org/NewCondition',
+
+                'hasMerchantReturnPolicy' => [
+                    '@type' => 'MerchantReturnPolicy',
+                    'applicableCountry' => Config::MERCHANT_RETURN_POLICY['country'],
+                    'returnPolicyCategory' => Config::MERCHANT_RETURN_POLICY['category'],
+                    'merchantReturnDays' => Config::MERCHANT_RETURN_POLICY['days'],
+                    'returnMethod' => Config::MERCHANT_RETURN_POLICY['method'],
+                    'returnFees' => Config::MERCHANT_RETURN_POLICY['fees'],
+                ],
+
+                'shippingDetails' => [
+
+                    '@type' => 'OfferShippingDetails',
+
+                    'shippingDestination' => [
+                        '@type' => 'DefinedRegion',
+                        'addressCountry' => Config::SHIPPING['country'],
+                    ],
+
+                    'deliveryTime' => [
+
+                        '@type' => 'ShippingDeliveryTime',
+
+                        'handlingTime' => [
+                            '@type' => 'QuantitativeValue',
+                            'minValue' => Config::get('shipping.handling.min'),
+                            'maxValue' => Config::get('shipping.handling.max'),
+                            'unitCode' => 'DAY',
+                        ],
+
+                        'transitTime' => [
+                            '@type' => 'QuantitativeValue',
+                            'minValue' => Config::get('shipping.transit.min'),
+                            'maxValue' => Config::get('shipping.transit.max'),
+                            'unitCode' => 'DAY',
+                        ],
+
+                    ],
+
+                ],
+
+            ];
+        }
+
         return $this->clean([
 
             '@type' => 'Product',
@@ -99,61 +164,7 @@ final class Product extends Node
                 ]
                 : null,
 
-            'offers' => [
-                '@type' => 'Offer',
-
-                'url' => $product->url,
-
-                'price' => $product->price,
-
-                'priceCurrency' => $product->currency,
-
-                'availability' => $product->availability,
-
-                'seller' => [
-                    '@id' => Config::id('store'),
-                ],
-
-                'itemCondition' => 'https://schema.org/NewCondition',
-
-                'hasMerchantReturnPolicy' => [
-                    '@type' => 'MerchantReturnPolicy',
-                    'applicableCountry' => Config::MERCHANT_RETURN_POLICY['country'],
-                    'returnPolicyCategory' => Config::MERCHANT_RETURN_POLICY['category'],
-                    'merchantReturnDays' => Config::MERCHANT_RETURN_POLICY['days'],
-                ],
-
-                'shippingDetails' => [
-
-                    '@type' => 'OfferShippingDetails',
-
-                    'shippingDestination' => [
-                        '@type' => 'DefinedRegion',
-                        'addressCountry' => Config::SHIPPING['country'],
-                    ],
-
-                    'deliveryTime' => [
-
-                        '@type' => 'ShippingDeliveryTime',
-
-                        'handlingTime' => [
-                            '@type' => 'QuantitativeValue',
-                            'minValue' => Config::get('shipping.handling.min'),
-                            'maxValue' => Config::get('shipping.handling.max'),
-                            'unitCode' => 'DAY',
-                        ],
-
-                        'transitTime' => [
-                            '@type' => 'QuantitativeValue',
-                            'minValue' => Config::get('shipping.transit.min'),
-                            'maxValue' => Config::get('shipping.transit.max'),
-                            'unitCode' => 'DAY',
-                        ],
-
-                    ],
-
-                ],
-            ],
+            'offers' => $offer,
 
         ]);
     }

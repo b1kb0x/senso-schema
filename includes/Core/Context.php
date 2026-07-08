@@ -64,7 +64,13 @@ final class Context
                 : home_url('/');
         }
 
-        return home_url(add_query_arg([], $GLOBALS['wp']->request));
+        global $wp;
+
+        if (isset($wp)) {
+            return home_url(add_query_arg([], $wp->request));
+        }
+
+        return home_url('/');
     }
 
     /**
@@ -91,18 +97,15 @@ final class Context
         return trailingslashit($this->url()) . '#' . ltrim($suffix, '#');
     }
 
+    /**
+     * Whether the current page can publish a Product schema.
+     */
     public function hasProductSchema(): bool
     {
         if (!function_exists('is_product') || !is_product()) {
             return false;
         }
 
-        $product = wc_get_product(get_the_ID());
-
-        if (!$product) {
-            return false;
-        }
-
-        return true;
+        return wc_get_product(get_the_ID()) !== null;
     }
 }
