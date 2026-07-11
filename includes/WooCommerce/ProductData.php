@@ -33,7 +33,7 @@ final readonly class ProductData
 
         public int $reviewCount,
 
-        public string $price,
+        public ?string $price,
 
         public string $currency,
 

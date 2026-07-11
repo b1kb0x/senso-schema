@@ -3,7 +3,7 @@
  * Plugin Name: Senso Schema
  * Plugin URI: https://senso.coffee
  * Description: Lightweight Schema.org generator for Senso Coffee.
- * Version: 1.1.1
+ * Version: 1.2
  * Requires PHP: 8.3
  * Author: Senso Coffee
  * Author URI: https://senso.coffee
@@ -23,7 +23,7 @@ if (!defined('ABSPATH')) {
 |--------------------------------------------------------------------------
 */
 
-define('SENSO_SCHEMA_VERSION', '1.1.1');
+define('SENSO_SCHEMA_VERSION', '1.2');
 define('SENSO_SCHEMA_PATH', plugin_dir_path(__FILE__));
 define('SENSO_SCHEMA_URL', plugin_dir_url(__FILE__));
 define('SENSO_SCHEMA_FILE', __FILE__);
