@@ -33,6 +33,17 @@ final class WebPage extends Node
             $pageType = 'CollectionPage';
         }
 
+        $name = $context->title();
+
+        if ($hasProduct) {
+
+            $product = wc_get_product(get_the_ID());
+
+            if ($product instanceof \WC_Product) {
+                $name = $product->get_name();
+            }
+        }
+
         return $this->clean([
 
             '@type' => $pageType,
@@ -41,7 +52,7 @@ final class WebPage extends Node
 
             'url' => $context->url(),
 
-            'name' => $context->title(),
+            'name' => $name,
 
             'inLanguage' => $context->language(),
 
